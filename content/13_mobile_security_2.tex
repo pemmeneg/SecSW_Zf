@@ -1,0 +1,93 @@
+\usepackage{graphicx}%! Author = Philipp Emmenegger
+%! Date = 29/06/2021
+
+\subsection{OWASP Mobile Top 10}
+\includegraphics[width=\linewidth]{../img/owasp_mobile.png}
+
+\subsubsection{Improper Platform Usage}
+\textbf{Risk}
+\begin{itemize}
+    \item Violation of published guidelines
+    \item Violation of convention or common practice
+    \item Unintentional Misuse
+\end{itemize}
+\textbf{Examples}
+\begin{itemize}
+    \item Grant app too many permissions
+    \item App local Storage Instead of Keychain
+\end{itemize}
+\textbf{Countermeasures}
+\begin{itemize}
+    \item Secure coding
+    \begin{itemize}
+        \item Guidelines by the manufacturer
+        \item Best-practices
+    \end{itemize}
+    \item Secure configuration
+    \begin{itemize}
+        \item Review
+        \item Least privilege
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Insecure Data Storage}
+\textbf{Risk}
+\begin{itemize}
+    \item Insecurely storing data
+    \begin{itemize}
+        \item Databases
+        \item Log files
+        \item Cookies
+        \item SD card
+        \item Cloud
+    \end{itemize}
+    \item Data leakage
+    \begin{itemize}
+        \item in OS, frameworks, hardware
+        \item without developers knowledge
+    \end{itemize}
+\end{itemize}
+\textbf{Channels}
+\begin{itemize}
+    \item Logs
+    \item Screenshots
+    \item Keyboard (autocomplete function)
+    \item Clipboard
+    \item Web Data (Cache, Cookies, Local Storage)
+    \item Inter Process Communication
+\end{itemize}
+\textbf{Countermeasures:}
+\begin{itemize}
+    \item Critical data
+    \begin{itemize}
+        \item No logging, no caching
+        \item If necessary, mask data
+    \end{itemize}
+    \item Logs: disable debug logs in production
+    \item Keyboard: disable autocomplete
+    \item Clipboard: disable copy/paste
+    \item Screenshots: use FLAG\_SECURE property
+\end{itemize}
+
+\subsubsection{Insecure Communication}
+\textbf{Risk}
+\begin{itemize}
+    \item Cleartext communication of sensitive data
+    \item Eavesdropping
+    \item TLS/SSL issues
+    \item Weak negotiation or ciphers
+    \item On any type of communication
+\end{itemize}
+\textbf{Countermeasures:}
+\begin{itemize}
+    \item Use SSL/TLS whenever possible
+    \item Use good certificates from trusted issuer
+    \item Don't send sensitive data over unsecure channels
+    \item Certificate Pinning
+    \begin{itemize}
+        \item Extended validation of SSL server certificate
+        \item Store server certificate explicitly in app
+        \item Compare on each connection
+        \item Certificate renewal must be handled
+    \end{itemize}
+\end{itemize}
